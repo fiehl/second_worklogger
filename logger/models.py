@@ -13,7 +13,7 @@ class Logs(models.Model):
 	project = models.ForeignKey(Project,on_delete=models.CASCADE)
 	duration = models.FloatField()
 	remarks = models.TextField(null=True)
-	total_day = models.IntegerField()
+	
 	date = models.DateField(default=timezone.now)
 
 	def __str__(self):

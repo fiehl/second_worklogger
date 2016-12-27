@@ -1,15 +1,19 @@
 {% extends 'logs/base.html'%}
 {% block content %}
+
 					
 						{% for log in logs %}
 						<tr class="logs_list">
 							<td>
 								{{log.duration}}
 							</td>
-							<td><a href="{% url 'logs_detail' pk=log.pk %}">{{log.project}}</a></td>
+							<td><a href="{% url 'log_edit' pk=log.pk %}">{{log.project}}</a></td>
 							<td>{{log.remarks}}</td>
+							
 						</tr>
 						{% endfor %}
+
+
 					
 {% endblock content %}
 		
