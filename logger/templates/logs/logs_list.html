@@ -1,38 +1,15 @@
-<html>
-	<head>
-		<title>Work Logger 2 </title>
-	</head>
-
-	<body>
-		<div>
-			<h1><a href="">Work Logger 2</a></h1>
-		</div>
-
-		<div>
-			<h2><a href="">Hi |{{user}}!</a></h2>
-		</div>
-
-		<div>
-			<ul>
-				<li>Total logs for the day: "{{total_day}}!"</li>
-				<li>Total logs for the month: "{{totat_month}}!"</li>
-				<li>Total logs for the week: "{{total_week}}!"</li>
-			</ul>
-		</div>
-
-		<div>
-			{% for log in logs %}
-				<div>
-					<ul>
-						<li>
-							Duration: {{log.duration}}
-						</li>
-						<li>Project: {{log.project}}</li>
-						<li>Remarks: {{log.remarks}}</li>
-					</ul>
-				</div>
-			{% endfor %}
-		</div>
-
-	</body>
-</html>
+{% extends 'logs/base.html'%}
+{% block content %}
+					
+						{% for log in logs %}
+						<tr class="logs_list">
+							<td>
+								{{log.duration}}
+							</td>
+							<td><a href="{% url 'logs_detail' pk=log.pk %}">{{log.project}}</a></td>
+							<td>{{log.remarks}}</td>
+						</tr>
+						{% endfor %}
+					
+{% endblock content %}
+		

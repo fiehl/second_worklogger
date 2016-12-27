@@ -1,0 +1,12 @@
+{% extends 'logs/base.html'%}
+
+{% block content %}
+		<tr class="logs_list">
+			<td>
+			{{log.duration}}
+			</td>
+			<td>{{log.project}}</td>
+			<td>{{log.remarks}}</td>
+		</tr>
+						
+{% endblock content %}
