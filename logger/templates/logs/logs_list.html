@@ -9,9 +9,30 @@
 		</div>
 
 		<div>
-			<p>published: 14.06.2014, 12:14</p>
-			<h2><a href="">My First post</a></h2>
+			<h2><a href="">Hi |{{user}}!</a></h2>
 		</div>
-		
+
+		<div>
+			<ul>
+				<li>Total logs for the day: "{{total_day}}!"</li>
+				<li>Total logs for the month: "{{totat_month}}!"</li>
+				<li>Total logs for the week: "{{total_week}}!"</li>
+			</ul>
+		</div>
+
+		<div>
+			{% for log in logs %}
+				<div>
+					<ul>
+						<li>
+							Duration: {{log.duration}}
+						</li>
+						<li>Project: {{log.project}}</li>
+						<li>Remarks: {{log.remarks}}</li>
+					</ul>
+				</div>
+			{% endfor %}
+		</div>
+
 	</body>
 </html>

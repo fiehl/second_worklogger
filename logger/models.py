@@ -17,4 +17,4 @@ class Logs(models.Model):
 	date = models.DateField(default=timezone.now)
 
 	def __str__(self):
-		return self.date		
+		return "Logs"		
