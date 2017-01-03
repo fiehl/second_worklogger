@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def logs_list(request):
 	total = 0
+	total_week =0
+	total_month =0
 	logs = Logs.objects.filter(date=timezone.now(),user=request.user).order_by('-date') 
 	
 	
@@ -22,14 +24,19 @@ def logs_list(request):
 			
 			log.save()
 			log.get_total_day(request)
+			log.get_total_week(request)
+			log.get_total_month(request)
 			return redirect('logs_list')
 	else:
 		form = LogsForm()
 	for log in logs:
 		log.get_total_day(request)
+		log.get_total_week(request)
+		log.get_total_month(request)
 		total = log.total_day
-		
-	return render(request,'logs/logs_list.html',{'logs':logs,'total':total,'form':form})
+		total_week = log.total_week
+		total_month = log.total_month
+	return render(request,'logs/logs_list.html',{'logs':logs,'total':total,'form':form,'total_week':total_week,'total_month':total_month})
 
 def logs_delete(request,pk):
 	logs= Logs()
