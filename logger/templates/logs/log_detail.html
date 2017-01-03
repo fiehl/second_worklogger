@@ -1,12 +1,11 @@
 {% extends 'logs/base.html'%}
 
 {% block content %}
-		<tr class="logs_list">
-			<td>
-			{{log.duration}}
-			</td>
-			<td>{{log.project}}</td>
-			<td>{{log.remarks}}</td>
-		</tr>
+		
+		<form method="POST" class="logs-form">{% csrf_token %}
+		Are you sure you want to delete {{log.duration}}, {{log.project}}, {{log.remarks}}?
+		<button type="submit" class="save btn btn-default">Yes</button>
+		
+	</form>
 						
 {% endblock content %}

@@ -24,7 +24,7 @@ SECRET_KEY = '0$5=p^htgw5evi9^@k(@a1bo3_va460w%($p_av*1s)b+q22+^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+LOGIN_REDIRECT_URL='logs_list'
 ALLOWED_HOSTS = []
 
 

@@ -1,19 +1,61 @@
 {% extends 'logs/base.html'%}
 {% block content %}
+{% if user.is_authenticated %}
+	<div class = "content container">
+		<h1> Add New Logs </h1>
+		<form method="POST" action="/" id="form-add">{% csrf_token %}
+        <h3>{{form.date.label}}: {{form.date}}</h3>
+        <table class="create">
+                <tbody>
+                    <tr>
+                        <th class="form-header">{{ form.duration.label }}</th>
+                        <th class="form-header">{{ form.project.label }}</th>
+                        <th class="form-header">{{ form.remarks.label }}</th>
 
-					
+                    </tr>
+                    <tr>
+                        <td class="form-input">{{ form.duration }}</td>
+                        <td class="form-input">{{ form.project }}</td>
+                        <td class="form-input">{{ form.remarks }}</td>
+                    </tr>
+                </tbody>
+        </table>
+
+        <button type="submit">Save</button>
+    </form>
+	</div>
+
+				<div class="content container">
+
+			<ul>
+				<li>Total logs for the day: {{total}}</li>
+				<li>Total logs for the month: {{total}}</li>
+				<li>Total logs for the week: {{total}}</li>
+			</ul>
+			
+    		
+		
+		</div>
+				<table>
+						<tr>
+							<th>Duration</th>
+							<th>Project</th>
+							<th>Remarks</th>
+						</tr>	
 						{% for log in logs %}
+							
 						<tr class="logs_list">
 							<td>
 								{{log.duration}}
 							</td>
 							<td><a href="{% url 'log_edit' pk=log.pk %}">{{log.project}}</a></td>
 							<td>{{log.remarks}}</td>
-							
+							<td><a href="{% url 'logs_delete' pk=log.pk %}">Delete</a></td>
 						</tr>
 						{% endfor %}
+				</table>
 
-
+{% endif %}
 					
 {% endblock content %}
 		
